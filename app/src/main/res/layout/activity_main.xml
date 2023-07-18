@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical">
 
         <ImageView
@@ -25,29 +26,57 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lnl2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/lnl1"
+        android:paddingHorizontal="55dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button2"
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@drawable/sign_up_btn_bg"
+            android:id="@+id/btnaccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Account Name" />
 
-        <Button
-            android:id="@+id/button3"
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@drawable/sign_up_btn_bg"
+            android:id="@+id/btnpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Password" />
 
-        <Button
-            android:id="@+id/button4"
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@drawable/sign_up_btn_bg"
+            android:id="@+id/btnsignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Sign Up" />
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lnl2"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_alignParentEnd="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/sign_up_btn_bg" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
