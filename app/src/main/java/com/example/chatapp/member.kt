@@ -1,6 +1,7 @@
 package com.example.chatapp
 
 class member(
-    val accout: String,
-    val pass: String,
+    var name: String?= "",
+    var email: String?="",
+    var pass: String?=""
 )
