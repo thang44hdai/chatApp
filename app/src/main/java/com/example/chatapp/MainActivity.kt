@@ -51,13 +51,12 @@ class MainActivity : AppCompatActivity() {
             val name = btnname.text.toString()
             val email = btnacc.text.toString()
             val pass = btnpass.text.toString()
-            val x = member(name, email, pass)
-
-            database = FirebaseDatabase.getInstance().getReference("user")
-            database.child(name).setValue(x)
-
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(){
                 if(it.isSuccessful){
+                    val x = member(firebaseAuth.uid, name, email, pass)
+
+                    database = FirebaseDatabase.getInstance().getReference("user")
+                    database.child(firebaseAuth.uid.toString()).setValue(x)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
