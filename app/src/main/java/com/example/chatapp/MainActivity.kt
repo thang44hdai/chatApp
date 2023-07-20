@@ -73,7 +73,9 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, screen2::class.java)
                     startActivity(intent)
                 }
-
+                else{
+                    Toast.makeText(this, "Sai tài khoản và mật khẩu", Toast.LENGTH_SHORT).show()
+                }
         }
     }
     override fun onRestart() {
