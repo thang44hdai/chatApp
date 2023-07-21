@@ -34,13 +34,16 @@ class chatActivity : AppCompatActivity() {
         data = FirebaseDatabase.getInstance().getReference()
 
         val ds : ArrayList<message> = ArrayList()
-        data.child("chats").child(senderRoom).child("message").addValueEventListener(object: ValueEventListener {
+
+        messageAdapter = messageAdapter(this, ds)
+        binding.rcvchat.adapter = messageAdapter
+
+        data.child("chats").child(senderRoom!!).child("message").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 ds.clear()
                 for(post in snapshot.children){
                     val mess = post.getValue(message::class.java)
-                    if(mess!=null)
-                        ds.add(mess)
+                    ds.add(mess!!)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -48,13 +51,12 @@ class chatActivity : AppCompatActivity() {
 
         })
 
-        messageAdapter = messageAdapter(this, ds)
-        binding.rcvchat.adapter = messageAdapter
-
         binding.btnsend.setOnClickListener(){
             val mess = binding.edtmessage.text.toString()
             val messObject = message(mess, senderUid)
-            data.child("chats").child(senderRoom).child("message").setValue(messObject)
+            data.child("chats").child(senderRoom!!).child("message").setValue(messObject).addOnSuccessListener {
+                data.child("chats").child(receiverRoom!!).child("message").setValue(messObject)
+            }
             binding.edtmessage.setText("")
         }
     }
