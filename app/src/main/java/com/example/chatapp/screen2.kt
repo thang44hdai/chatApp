@@ -3,7 +3,9 @@ package com.example.chatapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.chatapp.adapter.adapter
 import com.example.chatapp.databinding.ActivityScreen2Binding
+import com.example.chatapp.`object`.member
 import com.google.firebase.database.*
 
 class screen2 : AppCompatActivity() {
@@ -30,6 +32,7 @@ class screen2 : AppCompatActivity() {
                     if(id!=null)
                         ds.add(id)
                 }
+                adapter.notifyDataSetChanged()
             }
             override fun onCancelled(error: DatabaseError) {
             }

@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.chatapp.`object`
 
 class member(
     var uid: String ?= "",

@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.chatapp.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
+import com.example.chatapp.R
+import com.example.chatapp.chatActivity
+import com.example.chatapp.`object`.member
 
 class adapter(val context: Context, val ds: ArrayList<member>): RecyclerView.Adapter<adapter.viewholder>() {
     inner class viewholder(view: View) : RecyclerView.ViewHolder(view)
@@ -23,10 +25,10 @@ class adapter(val context: Context, val ds: ArrayList<member>): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
-        val btnname = holder.itemView.findViewById<Button>(R.id.btnname)
+        val btnname = holder.itemView.findViewById<TextView>(R.id.tvname)
         val currentMem = ds[position]
         btnname.setText(currentMem.name)
-        btnname.setOnClickListener(){
+        holder.itemView.setOnClickListener(){
             val intent = Intent(context, chatActivity::class.java)
             intent.putExtra("name", currentMem.name)
             intent.putExtra("uid", currentMem.uid)

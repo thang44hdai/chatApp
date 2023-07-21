@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.chatapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.chatapp.R
+import com.example.chatapp.`object`.message
 import com.google.firebase.auth.FirebaseAuth
 
 class messageAdapter(val context: Context, val ds: ArrayList<message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -26,7 +27,6 @@ class messageAdapter(val context: Context, val ds: ArrayList<message>) : Recycle
             return sendViewHolder(view)
         }
     }
-
     override fun getItemViewType(position: Int): Int {
         val currentMessage = ds[position]
         if(FirebaseAuth.getInstance().currentUser?.uid.equals(currentMessage.senderID)){
