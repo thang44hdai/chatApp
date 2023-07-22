@@ -1,2 +1,2 @@
 # chatApp
-pass: 123456789
+pass key: 123456789
