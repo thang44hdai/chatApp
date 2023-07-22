@@ -17,7 +17,7 @@ class screen2 : AppCompatActivity() {
         binding = ActivityScreen2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rcvlist.layoutManager = LinearLayoutManager(this)
+        binding.rcvlist.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val ds: ArrayList<member> = ArrayList()
 
         adapter = adapter(this, ds)
