@@ -38,8 +38,6 @@ class screen2 : AppCompatActivity() {
             }
 
         })
-//
-
 
     }
 

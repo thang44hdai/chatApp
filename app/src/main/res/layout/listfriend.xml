@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
         <TextView
-            android:background="@drawable/sign_up_btn_bg"
             android:id="@+id/tvname"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Name"
            />
 </LinearLayout>

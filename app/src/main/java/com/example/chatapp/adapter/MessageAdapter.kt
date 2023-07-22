@@ -10,8 +10,11 @@ import com.example.chatapp.R
 import com.example.chatapp.`object`.message
 import com.google.firebase.auth.FirebaseAuth
 
-class messageAdapter(val context: Context, val ds: ArrayList<message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class messageAdapter
+    (val context: Context, val ds: ArrayList<message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    val ITEM_RECEIVER = 1
+    val ITEM_SEND = 2
     class sendViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val tvsend = itemView.findViewById<TextView>(R.id.tvsend)
     }
@@ -30,9 +33,9 @@ class messageAdapter(val context: Context, val ds: ArrayList<message>) : Recycle
     override fun getItemViewType(position: Int): Int {
         val currentMessage = ds[position]
         if(FirebaseAuth.getInstance().currentUser?.uid.equals(currentMessage.senderID)){
-            return 1 // receive
-        } else {
             return 2 // send
+        } else {
+            return 1 // receive
         }
     }
     override fun getItemCount(): Int {
@@ -44,8 +47,7 @@ class messageAdapter(val context: Context, val ds: ArrayList<message>) : Recycle
         if(holder.javaClass == sendViewHolder::class.java){
             val viewHolder = holder as sendViewHolder
             holder.tvsend.text = currentMessage.message
-        }
-        else{
+        }else{
             val viewHolder = holder as receiveViewHolder
             holder.tvreceive.text = currentMessage.message
         }

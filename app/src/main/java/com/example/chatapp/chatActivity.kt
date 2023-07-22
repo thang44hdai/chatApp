@@ -3,6 +3,7 @@ package com.example.chatapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.adapter.messageAdapter
 import com.example.chatapp.databinding.ActivityChatBinding
@@ -17,30 +18,35 @@ class chatActivity : AppCompatActivity() {
     private lateinit var data: DatabaseReference
     lateinit var senderRoom: String
     lateinit var receiverRoom: String
+    lateinit var name: String
+    lateinit var receiverUid: String
+    lateinit var senderUid: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rcvchat.layoutManager = LinearLayoutManager(this)
-
-        var intent = Intent()
-        var name = intent.getStringExtra("name")
-        var receiverUid = intent.getStringExtra("uid")
-
-        var senderUid = FirebaseAuth.getInstance().currentUser?.uid
+        var intent = intent.extras
+        if(intent != null){
+            name = intent.getString("name", "")
+            receiverUid = intent.getString("uid", "")
+            senderUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        }
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
+
+        Log.d("name: ", name)
+        Log.d("senderUid: ", senderUid)
+        Log.d("receiverUid: ", receiverUid)
 
         data = FirebaseDatabase.getInstance().getReference()
         val ds : ArrayList<message> = ArrayList()
         // set adapter
         messageAdapter = messageAdapter(this, ds)
+        binding.rcvchat.layoutManager = LinearLayoutManager(this)
         binding.rcvchat.adapter = messageAdapter
-
         //add message to box
-        data.child("chats").child(senderRoom!!).child("messages").addValueEventListener(object: ValueEventListener{
-
+        data.child("chats").child(receiverRoom!!).child("messages").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 ds.clear()
                 for(post in snapshot.children){
@@ -48,11 +54,9 @@ class chatActivity : AppCompatActivity() {
                     ds.add(mess!!)
                 }
                 messageAdapter.notifyDataSetChanged()
-
             }
             override fun onCancelled(error: DatabaseError) {
             }
-
         })
         binding.btnsend.setOnClickListener(){
             val mess = binding.edtmessage.text.toString()
@@ -62,5 +66,6 @@ class chatActivity : AppCompatActivity() {
             }
             binding.edtmessage.setText("")
         }
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.chatapp.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.R
 import com.example.chatapp.chatActivity
 import com.example.chatapp.`object`.member
+import com.example.chatapp.screen2
 
 class adapter(val context: Context, val ds: ArrayList<member>): RecyclerView.Adapter<adapter.viewholder>() {
     inner class viewholder(view: View) : RecyclerView.ViewHolder(view)
@@ -30,8 +32,10 @@ class adapter(val context: Context, val ds: ArrayList<member>): RecyclerView.Ada
         btnname.setText(currentMem.name)
         holder.itemView.setOnClickListener(){
             val intent = Intent(context, chatActivity::class.java)
-            intent.putExtra("name", currentMem.name)
-            intent.putExtra("uid", currentMem.uid)
+            val data= Bundle()
+            data.putString("name", currentMem.name)
+            data.putString("uid", currentMem.uid)
+            intent.putExtras(data)
             context.startActivity(intent)
         }
     }
