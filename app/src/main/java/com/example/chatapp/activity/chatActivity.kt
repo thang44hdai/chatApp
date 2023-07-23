@@ -1,9 +1,7 @@
-package com.example.chatapp
+package com.example.chatapp.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.adapter.messageAdapter
 import com.example.chatapp.databinding.ActivityChatBinding

@@ -6,19 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.R
-import com.example.chatapp.chatActivity
+import com.example.chatapp.activity.chatActivity
 import com.example.chatapp.`object`.member
-import com.example.chatapp.screen2
 
 class adapter(val context: Context, val ds: ArrayList<member>): RecyclerView.Adapter<adapter.viewholder>() {
     inner class viewholder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
-        val view = LayoutInflater.from(context).inflate(R.layout.listfriend, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_friend, parent, false)
         return viewholder(view)
     }
 

@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.chatapp.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.chatapp.R
 import com.example.chatapp.databinding.ActivityMainBinding
 import com.example.chatapp.`object`.member
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun open_dialog_to_register(){
         val dialog = AlertDialog.Builder(this)
-        val dialog_view = layoutInflater.inflate(R.layout.dialog, null)
+        val dialog_view = layoutInflater.inflate(R.layout.dialog_sign_up, null)
         dialog.setTitle("Register")
         dialog.setView(dialog_view)
         dialog.create().show()
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         val pass = binding.edtpass.text.toString()
         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(){
                 if (it.isSuccessful) {
-                    val intent = Intent(this, screen2::class.java)
+                    val intent = Intent(this, ListFriendActivity::class.java)
                     startActivity(intent)
                 }
                 else{

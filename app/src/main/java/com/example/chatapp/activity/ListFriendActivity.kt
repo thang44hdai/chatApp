@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.chatapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +8,7 @@ import com.example.chatapp.databinding.ActivityScreen2Binding
 import com.example.chatapp.`object`.member
 import com.google.firebase.database.*
 
-class screen2 : AppCompatActivity() {
+class ListFriendActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreen2Binding
     private lateinit var database: DatabaseReference
     private lateinit var adapter: adapter
