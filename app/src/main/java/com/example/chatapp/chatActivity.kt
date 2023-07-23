@@ -35,9 +35,10 @@ class chatActivity : AppCompatActivity() {
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
 
-        Log.d("name: ", name)
-        Log.d("senderUid: ", senderUid)
-        Log.d("receiverUid: ", receiverUid)
+        binding.edtmessage.hint = "Viết gì cho $name đi: "
+//        Log.d("name: ", name)
+//        Log.d("senderUid: ", senderUid)
+//        Log.d("receiverUid: ", receiverUid)
 
         data = FirebaseDatabase.getInstance().getReference()
         val ds : ArrayList<message> = ArrayList()

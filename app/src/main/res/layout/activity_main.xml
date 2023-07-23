@@ -13,16 +13,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="15dp"
-        android:layout_marginBottom="15dp"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imgavatar"
             android:layout_width="291dp"
             android:layout_height="266dp"
-            app:srcCompat="@drawable/avatar"
-            tools:layout_editor_absoluteX="60dp"
-            tools:layout_editor_absoluteY="50dp" />
+            app:srcCompat="@drawable/img" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,27 +52,38 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:hint="Password" />
+            android:inputType="textPassword"
+            android:hint="Password"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/sign_up_btn_bg"
-            android:id="@+id/btnsignin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:text="Sign In" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/sign_up_btn_bg"
-            android:id="@+id/btnsignup"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:text="Sign Up" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnsignin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/violet"
+                android:layout_marginRight="8dp"
+                android:text="Sign In"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnsignup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/violet"
+                android:text="Sign Up???"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -84,20 +92,6 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/qr" />
     </LinearLayout>
 
 
